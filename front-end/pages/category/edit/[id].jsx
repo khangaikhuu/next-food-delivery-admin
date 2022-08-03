@@ -4,11 +4,9 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Alert from "@mui/material/Alert";
 
-export default function cat({ category }) {
+export default function Cat({ category }) {
   console.log(category);
   const [showAlert, setShowAlert] = useState(false);
-
-  const router = useRouter();
 
   const handleSubmit = () => {
     console.log("handling submit");
