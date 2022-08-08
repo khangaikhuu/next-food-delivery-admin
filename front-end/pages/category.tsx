@@ -10,7 +10,7 @@ type Category = {
 };
 
 export const getStaticProps = async () => {
-  const res = await axios.get("http://localhost:3001/category");
+  const res = await axios.get("http://localhost:3001/categories");
   const categories: Category[] = await res.data.data;
 
   return {

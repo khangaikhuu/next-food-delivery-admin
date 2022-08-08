@@ -32,12 +32,15 @@ export default function Cat({ category }) {
   );
 }
 
+const callCategories = axios.get("http://localhost:3001/categories");
+const callFoods = axios.get("http://localhost:3001/foods");
 export async function getStaticPaths() {
-  const res = await axios.get("http://localhost:3001/category");
-  console.log(res.data.data);
+  const [cats, fds] = await Promise.all([callCategories, callFoods]);
+  console.log(fds.data);
+  console.log(cats.data);
   return {
     fallback: false,
-    paths: res.data.data.map((category) => ({
+    paths: cats.data.data.map((category) => ({
       params: { id: category.id.toString() },
     })),
   };
